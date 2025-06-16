@@ -14,7 +14,7 @@ import {
   Lightbulb, 
   Beaker,
   ArrowRight,
-  Quiz,
+  HelpCircle,
   Calculator,
   Mic,
   Network,
@@ -95,7 +95,7 @@ const features = [
     id: 'quiz',
     title: 'Quiz Generator',
     description: 'Auto-generate quizzes from textbook pages or notes (MCQs, short answer, true/false)',
-    icon: Quiz,
+    icon: HelpCircle,
     color: 'cyan',
     path: '/quiz'
   },

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Quiz, CheckCircle2 } from 'lucide-react';
+import { HelpCircle, CheckCircle2 } from 'lucide-react';
 import { ImageUpload } from './ImageUpload';
 
 export const QuizGenerator = () => {
@@ -44,7 +44,7 @@ export const QuizGenerator = () => {
     <Card className="bg-white/70 backdrop-blur-sm border-cyan-200/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
       <CardHeader className="pb-3">
         <CardTitle className="flex items-center space-x-2 text-cyan-700">
-          <Quiz className="h-5 w-5" />
+          <HelpCircle className="h-5 w-5" />
           <span>Quiz Generator</span>
         </CardTitle>
         <p className="text-sm text-gray-600">Auto-generate quizzes from textbook pages or notes (MCQs, short answer, true/false)</p>
