@@ -7,6 +7,7 @@ import { VisualContentGenerator } from '@/components/VisualContentGenerator';
 import { LanguageLearning } from '@/components/LanguageLearning';
 import { VisualExplanation } from '@/components/VisualExplanation';
 import { LabAnalysis } from '@/components/LabAnalysis';
+import { ChatbotCard } from '@/components/ChatbotCard';
 import { GraduationCap, Brain, Eye } from 'lucide-react';
 
 const Index = () => {
@@ -50,6 +51,7 @@ const Index = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <VQASection />
           <HomeworkHelp />
+          <ChatbotCard />
           <InteractiveLearning />
           <VisualContentGenerator />
           <LanguageLearning />
