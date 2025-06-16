@@ -1,14 +1,101 @@
 
 import React from 'react';
-import { VQASection } from '@/components/VQASection';
-import { HomeworkHelp } from '@/components/HomeworkHelp';
-import { InteractiveLearning } from '@/components/InteractiveLearning';
-import { VisualContentGenerator } from '@/components/VisualContentGenerator';
-import { LanguageLearning } from '@/components/LanguageLearning';
-import { VisualExplanation } from '@/components/VisualExplanation';
-import { LabAnalysis } from '@/components/LabAnalysis';
-import { ChatbotCard } from '@/components/ChatbotCard';
-import { GraduationCap, Brain, Eye } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
+import { 
+  GraduationCap, 
+  Brain, 
+  Eye, 
+  MessageCircleQuestion, 
+  BookOpen, 
+  Bot,
+  Microscope, 
+  Wand2, 
+  Languages, 
+  Lightbulb, 
+  Beaker,
+  ArrowRight
+} from 'lucide-react';
+
+const features = [
+  {
+    id: 'vqa',
+    title: 'Visual Question Answering',
+    description: 'Upload images and ask questions to get AI-powered explanations',
+    icon: MessageCircleQuestion,
+    color: 'blue',
+    path: '/vqa'
+  },
+  {
+    id: 'homework',
+    title: 'Homework Helper',
+    description: 'Upload handwritten notes for instant analysis and solutions',
+    icon: BookOpen,
+    color: 'green',
+    path: '/homework'
+  },
+  {
+    id: 'chatbot',
+    title: 'LLaVA Chatbot',
+    description: 'Chat with AI about images and visual learning',
+    icon: Bot,
+    color: 'purple',
+    path: '/chatbot'
+  },
+  {
+    id: 'interactive',
+    title: 'Interactive Learning',
+    description: 'Explore educational images and ask questions about what you see',
+    icon: Microscope,
+    color: 'purple',
+    path: '/interactive'
+  },
+  {
+    id: 'generator',
+    title: 'Visual Content Generator',
+    description: 'Generate educational diagrams and illustrations from text descriptions',
+    icon: Wand2,
+    color: 'orange',
+    path: '/generator'
+  },
+  {
+    id: 'language',
+    title: 'Language Learning',
+    description: 'Practice describing images in foreign languages',
+    icon: Languages,
+    color: 'teal',
+    path: '/language'
+  },
+  {
+    id: 'explanation',
+    title: 'Visual Explanation',
+    description: 'Upload textbook pages for simplified summaries and study questions',
+    icon: Lightbulb,
+    color: 'indigo',
+    path: '/explanation'
+  },
+  {
+    id: 'lab',
+    title: 'Lab Analysis',
+    description: 'Upload lab photos for experiment analysis and feedback',
+    icon: Beaker,
+    color: 'red',
+    path: '/lab'
+  }
+];
+
+const getColorClasses = (color: string) => {
+  const colors = {
+    blue: 'border-blue-200/50 hover:border-blue-300 text-blue-700 bg-blue-50/30',
+    green: 'border-green-200/50 hover:border-green-300 text-green-700 bg-green-50/30',
+    purple: 'border-purple-200/50 hover:border-purple-300 text-purple-700 bg-purple-50/30',
+    orange: 'border-orange-200/50 hover:border-orange-300 text-orange-700 bg-orange-50/30',
+    teal: 'border-teal-200/50 hover:border-teal-300 text-teal-700 bg-teal-50/30',
+    indigo: 'border-indigo-200/50 hover:border-indigo-300 text-indigo-700 bg-indigo-50/30',
+    red: 'border-red-200/50 hover:border-red-300 text-red-700 bg-red-50/30'
+  };
+  return colors[color as keyof typeof colors] || colors.blue;
+};
 
 const Index = () => {
   return (
@@ -48,15 +135,30 @@ const Index = () => {
         </div>
 
         {/* Feature Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <VQASection />
-          <HomeworkHelp />
-          <ChatbotCard />
-          <InteractiveLearning />
-          <VisualContentGenerator />
-          <LanguageLearning />
-          <VisualExplanation />
-          <LabAnalysis />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {features.map((feature) => {
+            const IconComponent = feature.icon;
+            return (
+              <Link key={feature.id} to={feature.path}>
+                <Card className={`bg-white/70 backdrop-blur-sm ${getColorClasses(feature.color)} hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer h-full`}>
+                  <CardHeader className="pb-3">
+                    <CardTitle className="flex items-center justify-between">
+                      <div className="flex items-center space-x-2">
+                        <IconComponent className="h-5 w-5" />
+                        <span className="text-sm font-semibold">{feature.title}</span>
+                      </div>
+                      <ArrowRight className="h-4 w-4 opacity-60" />
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
