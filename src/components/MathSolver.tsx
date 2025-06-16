@@ -2,90 +2,98 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Calculator, Target } from 'lucide-react';
+import { Calculator, CheckCircle2 } from 'lucide-react';
 import { ImageUpload } from './ImageUpload';
 
 export const MathSolver = () => {
-  const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [solution, setSolution] = useState('');
+  const [isSolving, setIsSolving] = useState(false);
+  const [solution, setSolution] = useState<any>(null);
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
-  const [equation, setEquation] = useState('');
 
   const handleSolve = async () => {
-    if (!uploadedImage && !equation.trim()) return;
+    if (!uploadedImage) return;
     
-    setIsAnalyzing(true);
+    setIsSolving(true);
     // Simulate API call
     setTimeout(() => {
-      setSolution(`**Problem:** 2x + 5 = 13
-
-**Step-by-Step Solution:**
-
-**Step 1:** Subtract 5 from both sides
-2x + 5 - 5 = 13 - 5
-2x = 8
-
-**Step 2:** Divide both sides by 2
-2x ÷ 2 = 8 ÷ 2
-x = 4
-
-**Step 3:** Verification
-Substitute x = 4 back into the original equation:
-2(4) + 5 = 8 + 5 = 13 ✓
-
-**Final Answer:** x = 4
-
-**Key Concepts Used:**
-- Inverse operations (subtraction and division)
-- Equation balancing principle
-- Solution verification`);
-      setIsAnalyzing(false);
-    }, 2500);
+      setSolution({
+        problem: "2x + 5 = 13",
+        steps: [
+          {
+            step: 1,
+            description: "اطرح 5 من كلا الطرفين",
+            equation: "2x + 5 - 5 = 13 - 5",
+            result: "2x = 8"
+          },
+          {
+            step: 2,
+            description: "اقسم كلا الطرفين على 2",
+            equation: "2x ÷ 2 = 8 ÷ 2",
+            result: "x = 4"
+          }
+        ],
+        verification: "التحقق: 2(4) + 5 = 8 + 5 = 13 ✓",
+        answer: "x = 4"
+      });
+      setIsSolving(false);
+    }, 3000);
   };
 
   return (
-    <Card className="bg-white/70 backdrop-blur-sm border-emerald-200/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+    <Card className="bg-white/70 backdrop-blur-sm border-emerald-200/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1" dir="rtl">
       <CardHeader className="pb-3">
-        <CardTitle className="flex items-center space-x-2 text-emerald-700">
+        <CardTitle className="flex items-center space-x-2 space-x-reverse text-emerald-700">
           <Calculator className="h-5 w-5" />
-          <span>Step-by-Step Math Solver</span>
+          <span>حلال الرياضيات خطوة بخطوة</span>
         </CardTitle>
-        <p className="text-sm text-gray-600">Get detailed step-by-step solutions for handwritten or typed math problems</p>
+        <p className="text-sm text-gray-600">احصل على حلول مفصلة خطوة بخطوة لمسائل الرياضيات المكتوبة بخط اليد أو المطبوعة</p>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="space-y-2">
-          <label className="text-sm font-medium text-gray-700">Type your equation (optional)</label>
-          <Input
-            value={equation}
-            onChange={(e) => setEquation(e.target.value)}
-            placeholder="e.g., 2x + 5 = 13"
-            className="border-emerald-200 focus:border-emerald-400"
-          />
-        </div>
-
-        <div className="text-center text-sm text-gray-500">OR</div>
-
         <ImageUpload 
           onImageUpload={setUploadedImage}
-          placeholder="Upload handwritten math problem"
+          placeholder="ارفع مسألة رياضية"
         />
 
         <Button 
           onClick={handleSolve}
-          disabled={(!uploadedImage && !equation.trim()) || isAnalyzing}
+          disabled={!uploadedImage || isSolving}
           className="w-full bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800"
         >
-          {isAnalyzing ? 'Solving...' : 'Solve Step-by-Step'}
+          {isSolving ? 'جاري الحل...' : 'حل المسألة'}
         </Button>
 
         {solution && (
           <div className="mt-4 p-4 bg-emerald-50 rounded-lg border border-emerald-200">
-            <div className="flex items-center space-x-2 mb-2">
-              <Target className="h-4 w-4 text-emerald-600" />
-              <h4 className="font-medium text-emerald-800">Solution:</h4>
+            <div className="flex items-center space-x-2 space-x-reverse mb-4">
+              <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+              <h4 className="font-medium text-emerald-800">الحل خطوة بخطوة:</h4>
             </div>
-            <div className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">{solution}</div>
+            
+            <div className="mb-4 p-3 bg-white rounded border">
+              <h5 className="font-medium text-gray-800 mb-2">المسألة:</h5>
+              <p className="text-lg font-mono">{solution.problem}</p>
+            </div>
+
+            <div className="space-y-3 mb-4">
+              {solution.steps.map((step: any, idx: number) => (
+                <div key={idx} className="p-3 bg-white rounded border">
+                  <div className="flex items-center space-x-2 space-x-reverse mb-2">
+                    <span className="bg-emerald-100 text-emerald-800 px-2 py-1 rounded text-sm font-medium">
+                      الخطوة {step.step}
+                    </span>
+                  </div>
+                  <p className="text-gray-700 mb-2">{step.description}</p>
+                  <p className="font-mono text-gray-800 mb-1">{step.equation}</p>
+                  <p className="font-mono font-bold text-emerald-700">{step.result}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="p-3 bg-green-100 rounded border border-green-300">
+              <p className="text-green-800 font-medium mb-2">الإجابة النهائية:</p>
+              <p className="text-xl font-bold text-green-900">{solution.answer}</p>
+              <p className="text-sm text-green-700 mt-2">{solution.verification}</p>
+            </div>
           </div>
         )}
       </CardContent>

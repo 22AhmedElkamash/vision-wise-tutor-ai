@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
@@ -29,144 +30,144 @@ import {
 const features = [
   {
     id: 'vqa',
-    title: 'Visual Question Answering',
-    description: 'Upload images and ask questions to get AI-powered explanations',
+    title: 'الإجابة على الأسئلة المرئية',
+    description: 'ارفع الصور واسأل أسئلة للحصول على تفسيرات مدعومة بالذكاء الاصطناعي',
     icon: MessageCircleQuestion,
     color: 'blue',
     path: '/vqa'
   },
   {
     id: 'homework',
-    title: 'Homework Helper',
-    description: 'Upload handwritten notes for instant analysis and solutions',
+    title: 'مساعد الواجبات المنزلية',
+    description: 'ارفع الملاحظات المكتوبة بخط اليد للحصول على تحليل فوري وحلول',
     icon: BookOpen,
     color: 'green',
     path: '/homework'
   },
   {
     id: 'chatbot',
-    title: 'LLaVA Chatbot',
-    description: 'Chat with AI about images and visual learning',
+    title: 'روبوت المحادثة LLaVA',
+    description: 'تحدث مع الذكاء الاصطناعي حول الصور والتعلم المرئي',
     icon: Bot,
     color: 'purple',
     path: '/chatbot'
   },
   {
     id: 'interactive',
-    title: 'Interactive Learning',
-    description: 'Explore educational images and ask questions about what you see',
+    title: 'التعلم التفاعلي',
+    description: 'استكشف الصور التعليمية واسأل أسئلة حول ما تراه',
     icon: Microscope,
     color: 'purple',
     path: '/interactive'
   },
   {
     id: 'generator',
-    title: 'Visual Content Generator',
-    description: 'Generate educational diagrams and illustrations from text descriptions',
+    title: 'مولد المحتوى المرئي',
+    description: 'أنشئ رسوماً بيانية ورسوماً توضيحية تعليمية من الأوصاف النصية',
     icon: Wand2,
     color: 'orange',
     path: '/generator'
   },
   {
     id: 'language',
-    title: 'Language Learning',
-    description: 'Practice describing images in foreign languages',
+    title: 'تعلم اللغات',
+    description: 'تدرب على وصف الصور بلغات أجنبية',
     icon: Languages,
     color: 'teal',
     path: '/language'
   },
   {
     id: 'explanation',
-    title: 'Visual Explanation',
-    description: 'Upload textbook pages for simplified summaries and study questions',
+    title: 'الشرح المرئي',
+    description: 'ارفع صفحات الكتب المدرسية للحصول على ملخصات مبسطة وأسئلة دراسية',
     icon: Lightbulb,
     color: 'indigo',
     path: '/explanation'
   },
   {
     id: 'lab',
-    title: 'Lab Analysis',
-    description: 'Upload lab photos for experiment analysis and feedback',
+    title: 'تحليل المختبر',
+    description: 'ارفع صور المختبر لتحليل التجارب والحصول على ملاحظات',
     icon: Beaker,
     color: 'red',
     path: '/lab'
   },
   {
     id: 'quiz',
-    title: 'Quiz Generator',
-    description: 'Auto-generate quizzes from textbook pages or notes (MCQs, short answer, true/false)',
+    title: 'مولد الاختبارات',
+    description: 'أنشئ اختبارات تلقائياً من صفحات الكتب المدرسية أو الملاحظات (اختيار متعدد، إجابة قصيرة، صحيح/خطأ)',
     icon: HelpCircle,
     color: 'cyan',
     path: '/quiz'
   },
   {
     id: 'math-solver',
-    title: 'Step-by-Step Math Solver',
-    description: 'Get detailed step-by-step solutions for handwritten or typed math problems',
+    title: 'حلال الرياضيات خطوة بخطوة',
+    description: 'احصل على حلول مفصلة خطوة بخطوة لمسائل الرياضيات المكتوبة بخط اليد أو المطبوعة',
     icon: Calculator,
     color: 'emerald',
     path: '/math-solver'
   },
   {
     id: 'voice',
-    title: 'Voice Input & Read-Aloud',
-    description: 'Ask questions with your voice and hear AI answers read aloud',
+    title: 'الإدخال الصوتي والقراءة بصوت عالٍ',
+    description: 'اسأل أسئلة بصوتك واستمع إلى إجابات الذكاء الاصطناعي مقروءة بصوت عالٍ',
     icon: Mic,
     color: 'pink',
     path: '/voice'
   },
   {
     id: 'concept-visualizer',
-    title: 'Concept Visualizer',
-    description: 'Generate concept maps and diagrams for any topic or term',
+    title: 'مُصور المفاهيم',
+    description: 'أنشئ خرائط مفاهيم ورسوماً بيانية لأي موضوع أو مصطلح',
     icon: Network,
     color: 'violet',
     path: '/concept-visualizer'
   },
   {
     id: 'progress-tracker',
-    title: 'Homework Progress Tracker',
-    description: 'Track your learning progress with weekly reports and weak point analysis',
+    title: 'متتبع تقدم الواجبات',
+    description: 'تتبع تقدمك في التعلم مع تقارير أسبوعية وتحليل نقاط الضعف',
     icon: TrendingUp,
     color: 'amber',
     path: '/progress-tracker'
   },
   {
     id: 'past-paper',
-    title: 'Past Paper Analyzer',
-    description: 'Upload exam papers for categorized questions and suggested answers',
+    title: 'محلل الأوراق السابقة',
+    description: 'ارفع أوراق الامتحانات للحصول على أسئلة مصنفة وإجابات مقترحة',
     icon: FileText,
     color: 'slate',
     path: '/past-paper'
   },
   {
     id: 'daily-challenge',
-    title: 'Daily Challenge / AI Tutor Bot',
-    description: 'Get daily mini-lessons and challenges to build consistent learning habits',
+    title: 'التحدي اليومي / روبوت المعلم الذكي',
+    description: 'احصل على دروس مصغرة وتحديات يومية لبناء عادات تعلم مستمرة',
     icon: Calendar,
     color: 'rose',
     path: '/daily-challenge'
   },
   {
     id: 'explain-simple',
-    title: 'Explain Like I\'m 5',
-    description: 'Get very simple explanations for complex concepts, removing all jargon',
+    title: 'اشرح لي كأنني طفل في الخامسة',
+    description: 'احصل على تفسيرات بسيطة جداً للمفاهيم المعقدة، مع إزالة كل المصطلحات الصعبة',
     icon: Smile,
     color: 'lime',
     path: '/explain-simple'
   },
   {
     id: 'collaboration',
-    title: 'Multi-Student Collaboration Board',
-    description: 'Learn together with other students on shared topics and discussions',
+    title: 'لوحة التعاون متعددة الطلاب',
+    description: 'تعلم مع طلاب آخرين حول مواضيع ومناقشات مشتركة',
     icon: Users,
     color: 'sky',
     path: '/collaboration'
   },
   {
     id: 'offline-pack',
-    title: 'Offline Study Pack Export',
-    description: 'Download AI-generated summaries, images, and quizzes for offline studying',
+    title: 'تصدير حزمة الدراسة غير المتصلة',
+    description: 'حمّل ملخصات وصور واختبارات مُنشأة بالذكاء الاصطناعي للدراسة بدون إنترنت',
     icon: Download,
     color: 'neutral',
     path: '/offline-pack'
@@ -198,12 +199,12 @@ const getColorClasses = (color: string) => {
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50" dir="rtl">
       {/* Header */}
       <header className="bg-white/80 backdrop-blur-sm border-b border-blue-200/50 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 space-x-reverse">
               <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-xl">
                 <Brain className="h-8 w-8 text-white" />
               </div>
@@ -211,12 +212,12 @@ const Index = () => {
                 <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                   EduVision AI
                 </h1>
-                <p className="text-sm text-gray-600">Visual Learning Assistant</p>
+                <p className="text-sm text-gray-600">مساعد التعلم المرئي</p>
               </div>
             </div>
-            <div className="flex items-center space-x-2 text-sm text-gray-600">
+            <div className="flex items-center space-x-2 space-x-reverse text-sm text-gray-600">
               <Eye className="h-4 w-4" />
-              <span>Vision-Language Powered</span>
+              <span>مدعوم بتقنية الرؤية واللغة</span>
             </div>
           </div>
         </div>
@@ -226,10 +227,10 @@ const Index = () => {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Learn Smarter with AI Vision
+            تعلم بذكاء مع الذكاء الاصطناعي المرئي
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Upload images, ask questions, and get intelligent explanations powered by advanced vision-language models
+            ارفع الصور، اسأل أسئلة، واحصل على تفسيرات ذكية مدعومة بنماذج الرؤية واللغة المتقدمة
           </p>
         </div>
 
@@ -242,11 +243,11 @@ const Index = () => {
                 <Card className={`bg-white/70 backdrop-blur-sm ${getColorClasses(feature.color)} hover:shadow-lg transition-all duration-300 hover:-translate-y-1 cursor-pointer h-full`}>
                   <CardHeader className="pb-3">
                     <CardTitle className="flex items-center justify-between">
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center space-x-2 space-x-reverse">
                         <IconComponent className="h-5 w-5" />
                         <span className="text-sm font-semibold">{feature.title}</span>
                       </div>
-                      <ArrowRight className="h-4 w-4 opacity-60" />
+                      <ArrowRight className="h-4 w-4 opacity-60 rotate-180" />
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -265,11 +266,11 @@ const Index = () => {
       <footer className="bg-white/50 backdrop-blur-sm border-t border-blue-200/50 mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center text-gray-600">
-            <div className="flex items-center justify-center space-x-2 mb-2">
+            <div className="flex items-center justify-center space-x-2 space-x-reverse mb-2">
               <GraduationCap className="h-5 w-5" />
               <span className="font-semibold">EduVision AI</span>
             </div>
-            <p className="text-sm">Empowering education through visual AI technology</p>
+            <p className="text-sm">تمكين التعليم من خلال تقنية الذكاء الاصطناعي المرئي</p>
           </div>
         </div>
       </footer>

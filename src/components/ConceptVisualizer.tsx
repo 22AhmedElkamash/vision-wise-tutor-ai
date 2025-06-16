@@ -3,102 +3,119 @@ import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Network, Map } from 'lucide-react';
+import { Network, Eye, Download } from 'lucide-react';
 
 export const ConceptVisualizer = () => {
   const [concept, setConcept] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
-  const [conceptMap, setConceptMap] = useState<any>(null);
+  const [visualization, setVisualization] = useState<any>(null);
 
-  const handleVisualize = async () => {
+  const handleGenerate = async () => {
     if (!concept.trim()) return;
     
     setIsGenerating(true);
     // Simulate API call
     setTimeout(() => {
-      setConceptMap({
+      setVisualization({
         title: concept,
-        nodes: [
-          { id: 'main', label: concept, x: 300, y: 200, type: 'main' },
-          { id: 'sub1', label: 'Process', x: 150, y: 100, type: 'sub' },
-          { id: 'sub2', label: 'Components', x: 450, y: 100, type: 'sub' },
-          { id: 'sub3', label: 'Location', x: 150, y: 300, type: 'sub' },
-          { id: 'sub4', label: 'Products', x: 450, y: 300, type: 'sub' }
+        centralConcept: concept,
+        relatedConcepts: [
+          { name: 'الضوء', connection: 'يحتاج إلى' },
+          { name: 'الماء', connection: 'يحتاج إلى' },
+          { name: 'ثاني أكسيد الكربون', connection: 'يستهلك' },
+          { name: 'الأكسجين', connection: 'ينتج' },
+          { name: 'الجلوكوز', connection: 'ينتج' },
+          { name: 'الكلوروفيل', connection: 'يتطلب' }
         ],
-        connections: [
-          { from: 'main', to: 'sub1' },
-          { from: 'main', to: 'sub2' },
-          { from: 'main', to: 'sub3' },
-          { from: 'main', to: 'sub4' }
+        description: 'عملية التمثيل الضوئي هي العملية التي تستخدمها النباتات لتحويل الضوء والماء وثاني أكسيد الكربون إلى طاقة (جلوكوز) وأكسجين.',
+        keyPoints: [
+          'تحدث في الأوراق الخضراء',
+          'تتطلب وجود الكلوروفيل',
+          'تنتج الأكسجين كناتج جانبي',
+          'أساسية لدورة الحياة على الأرض'
         ]
       });
       setIsGenerating(false);
-    }, 3000);
+    }, 2500);
   };
 
   return (
-    <Card className="bg-white/70 backdrop-blur-sm border-violet-200/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+    <Card className="bg-white/70 backdrop-blur-sm border-violet-200/50 hover:shadow-lg transition-all duration-300 hover:-translate-y-1" dir="rtl">
       <CardHeader className="pb-3">
-        <CardTitle className="flex items-center space-x-2 text-violet-700">
+        <CardTitle className="flex items-center space-x-2 space-x-reverse text-violet-700">
           <Network className="h-5 w-5" />
-          <span>Concept Visualizer</span>
+          <span>مُصور المفاهيم</span>
         </CardTitle>
-        <p className="text-sm text-gray-600">Generate concept maps and diagrams for any topic or term</p>
+        <p className="text-sm text-gray-600">أنشئ خرائط مفاهيم ورسوماً بيانية لأي موضوع أو مصطلح</p>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="space-y-2">
-          <label className="text-sm font-medium text-gray-700">Enter concept or topic</label>
+          <label className="text-sm font-medium text-gray-700">المفهوم أو الموضوع</label>
           <Input
             value={concept}
             onChange={(e) => setConcept(e.target.value)}
-            placeholder="e.g., photosynthesis, democracy, mitosis"
+            placeholder="مثال: التمثيل الضوئي"
             className="border-violet-200 focus:border-violet-400"
           />
         </div>
 
         <Button 
-          onClick={handleVisualize}
+          onClick={handleGenerate}
           disabled={!concept.trim() || isGenerating}
           className="w-full bg-gradient-to-r from-violet-600 to-violet-700 hover:from-violet-700 hover:to-violet-800"
         >
-          {isGenerating ? 'Creating Visualization...' : 'Visualize Concept'}
+          {isGenerating ? 'جاري إنشاء الخريطة...' : 'أنشئ خريطة المفاهيم'}
         </Button>
 
-        {conceptMap && (
+        {visualization && (
           <div className="mt-4 p-4 bg-violet-50 rounded-lg border border-violet-200">
-            <div className="flex items-center space-x-2 mb-4">
-              <Map className="h-4 w-4 text-violet-600" />
-              <h4 className="font-medium text-violet-800">Concept Map: {conceptMap.title}</h4>
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center space-x-2 space-x-reverse">
+                <Eye className="h-4 w-4 text-violet-600" />
+                <h4 className="font-medium text-violet-800">خريطة المفاهيم: {visualization.title}</h4>
+              </div>
+              <Button size="sm" variant="outline" className="border-violet-300">
+                <Download className="h-4 w-4 ml-1" />
+                تحميل
+              </Button>
             </div>
-            <div className="bg-white rounded border h-64 flex items-center justify-center relative overflow-hidden">
-              {conceptMap.nodes.map((node: any) => (
-                <div
-                  key={node.id}
-                  className={`absolute px-3 py-2 rounded text-xs font-medium ${
-                    node.type === 'main' 
-                      ? 'bg-violet-600 text-white' 
-                      : 'bg-violet-100 text-violet-800 border border-violet-300'
-                  }`}
-                  style={{ left: `${(node.x / 600) * 100}%`, top: `${(node.y / 400) * 100}%`, transform: 'translate(-50%, -50%)' }}
-                >
-                  {node.label}
+
+            {/* Central Concept */}
+            <div className="text-center mb-6">
+              <div className="inline-block bg-violet-600 text-white px-6 py-3 rounded-lg font-bold text-lg">
+                {visualization.centralConcept}
+              </div>
+            </div>
+
+            {/* Related Concepts */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
+              {visualization.relatedConcepts.map((item: any, idx: number) => (
+                <div key={idx} className="text-center">
+                  <div className="bg-white border-2 border-violet-300 rounded-lg p-3 hover:bg-violet-50 transition-colors">
+                    <div className="font-medium text-gray-800">{item.name}</div>
+                    <div className="text-xs text-violet-600 mt-1">{item.connection}</div>
+                  </div>
                 </div>
               ))}
-              {/* Simplified connection lines */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none">
-                {conceptMap.connections.map((conn: any, idx: number) => (
-                  <line
-                    key={idx}
-                    x1="50%"
-                    y1="50%"
-                    x2={`${(conceptMap.nodes.find((n: any) => n.id === conn.to)?.x / 600) * 100}%`}
-                    y2={`${(conceptMap.nodes.find((n: any) => n.id === conn.to)?.y / 400) * 100}%`}
-                    stroke="#8b5cf6"
-                    strokeWidth="1"
-                    opacity="0.6"
-                  />
+            </div>
+
+            {/* Description */}
+            <div className="bg-white p-4 rounded-lg border mb-4">
+              <h5 className="font-medium text-gray-800 mb-2">الوصف:</h5>
+              <p className="text-gray-700 text-sm leading-relaxed">{visualization.description}</p>
+            </div>
+
+            {/* Key Points */}
+            <div className="bg-white p-4 rounded-lg border">
+              <h5 className="font-medium text-gray-800 mb-3">النقاط الرئيسية:</h5>
+              <ul className="space-y-2">
+                {visualization.keyPoints.map((point: string, idx: number) => (
+                  <li key={idx} className="flex items-start space-x-2 space-x-reverse">
+                    <div className="w-2 h-2 bg-violet-500 rounded-full mt-2 flex-shrink-0"></div>
+                    <span className="text-gray-700 text-sm">{point}</span>
+                  </li>
                 ))}
-              </svg>
+              </ul>
             </div>
           </div>
         )}
