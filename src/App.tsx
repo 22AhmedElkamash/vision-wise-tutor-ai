@@ -14,6 +14,16 @@ import GeneratorPage from "./pages/GeneratorPage";
 import LanguagePage from "./pages/LanguagePage";
 import ExplanationPage from "./pages/ExplanationPage";
 import LabPage from "./pages/LabPage";
+import QuizPage from "./pages/QuizPage";
+import MathSolverPage from "./pages/MathSolverPage";
+import VoicePage from "./pages/VoicePage";
+import ConceptVisualizerPage from "./pages/ConceptVisualizerPage";
+import ProgressTrackerPage from "./pages/ProgressTrackerPage";
+import PastPaperPage from "./pages/PastPaperPage";
+import DailyChallengePage from "./pages/DailyChallengePage";
+import ExplainSimplePage from "./pages/ExplainSimplePage";
+import CollaborationPage from "./pages/CollaborationPage";
+import OfflinePackPage from "./pages/OfflinePackPage";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +43,16 @@ const App = () => (
           <Route path="/language" element={<LanguagePage />} />
           <Route path="/explanation" element={<ExplanationPage />} />
           <Route path="/lab" element={<LabPage />} />
+          <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/math-solver" element={<MathSolverPage />} />
+          <Route path="/voice" element={<VoicePage />} />
+          <Route path="/concept-visualizer" element={<ConceptVisualizerPage />} />
+          <Route path="/progress-tracker" element={<ProgressTrackerPage />} />
+          <Route path="/past-paper" element={<PastPaperPage />} />
+          <Route path="/daily-challenge" element={<DailyChallengePage />} />
+          <Route path="/explain-simple" element={<ExplainSimplePage />} />
+          <Route path="/collaboration" element={<CollaborationPage />} />
+          <Route path="/offline-pack" element={<OfflinePackPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

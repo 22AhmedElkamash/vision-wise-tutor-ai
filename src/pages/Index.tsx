@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
@@ -14,7 +13,17 @@ import {
   Languages, 
   Lightbulb, 
   Beaker,
-  ArrowRight
+  ArrowRight,
+  Quiz,
+  Calculator,
+  Mic,
+  Network,
+  TrendingUp,
+  FileText,
+  Calendar,
+  Smile,
+  Users,
+  Download
 } from 'lucide-react';
 
 const features = [
@@ -81,6 +90,86 @@ const features = [
     icon: Beaker,
     color: 'red',
     path: '/lab'
+  },
+  {
+    id: 'quiz',
+    title: 'Quiz Generator',
+    description: 'Auto-generate quizzes from textbook pages or notes (MCQs, short answer, true/false)',
+    icon: Quiz,
+    color: 'cyan',
+    path: '/quiz'
+  },
+  {
+    id: 'math-solver',
+    title: 'Step-by-Step Math Solver',
+    description: 'Get detailed step-by-step solutions for handwritten or typed math problems',
+    icon: Calculator,
+    color: 'emerald',
+    path: '/math-solver'
+  },
+  {
+    id: 'voice',
+    title: 'Voice Input & Read-Aloud',
+    description: 'Ask questions with your voice and hear AI answers read aloud',
+    icon: Mic,
+    color: 'pink',
+    path: '/voice'
+  },
+  {
+    id: 'concept-visualizer',
+    title: 'Concept Visualizer',
+    description: 'Generate concept maps and diagrams for any topic or term',
+    icon: Network,
+    color: 'violet',
+    path: '/concept-visualizer'
+  },
+  {
+    id: 'progress-tracker',
+    title: 'Homework Progress Tracker',
+    description: 'Track your learning progress with weekly reports and weak point analysis',
+    icon: TrendingUp,
+    color: 'amber',
+    path: '/progress-tracker'
+  },
+  {
+    id: 'past-paper',
+    title: 'Past Paper Analyzer',
+    description: 'Upload exam papers for categorized questions and suggested answers',
+    icon: FileText,
+    color: 'slate',
+    path: '/past-paper'
+  },
+  {
+    id: 'daily-challenge',
+    title: 'Daily Challenge / AI Tutor Bot',
+    description: 'Get daily mini-lessons and challenges to build consistent learning habits',
+    icon: Calendar,
+    color: 'rose',
+    path: '/daily-challenge'
+  },
+  {
+    id: 'explain-simple',
+    title: 'Explain Like I\'m 5',
+    description: 'Get very simple explanations for complex concepts, removing all jargon',
+    icon: Smile,
+    color: 'lime',
+    path: '/explain-simple'
+  },
+  {
+    id: 'collaboration',
+    title: 'Multi-Student Collaboration Board',
+    description: 'Learn together with other students on shared topics and discussions',
+    icon: Users,
+    color: 'sky',
+    path: '/collaboration'
+  },
+  {
+    id: 'offline-pack',
+    title: 'Offline Study Pack Export',
+    description: 'Download AI-generated summaries, images, and quizzes for offline studying',
+    icon: Download,
+    color: 'neutral',
+    path: '/offline-pack'
   }
 ];
 
@@ -92,7 +181,17 @@ const getColorClasses = (color: string) => {
     orange: 'border-orange-200/50 hover:border-orange-300 text-orange-700 bg-orange-50/30',
     teal: 'border-teal-200/50 hover:border-teal-300 text-teal-700 bg-teal-50/30',
     indigo: 'border-indigo-200/50 hover:border-indigo-300 text-indigo-700 bg-indigo-50/30',
-    red: 'border-red-200/50 hover:border-red-300 text-red-700 bg-red-50/30'
+    red: 'border-red-200/50 hover:border-red-300 text-red-700 bg-red-50/30',
+    cyan: 'border-cyan-200/50 hover:border-cyan-300 text-cyan-700 bg-cyan-50/30',
+    emerald: 'border-emerald-200/50 hover:border-emerald-300 text-emerald-700 bg-emerald-50/30',
+    pink: 'border-pink-200/50 hover:border-pink-300 text-pink-700 bg-pink-50/30',
+    violet: 'border-violet-200/50 hover:border-violet-300 text-violet-700 bg-violet-50/30',
+    amber: 'border-amber-200/50 hover:border-amber-300 text-amber-700 bg-amber-50/30',
+    slate: 'border-slate-200/50 hover:border-slate-300 text-slate-700 bg-slate-50/30',
+    rose: 'border-rose-200/50 hover:border-rose-300 text-rose-700 bg-rose-50/30',
+    lime: 'border-lime-200/50 hover:border-lime-300 text-lime-700 bg-lime-50/30',
+    sky: 'border-sky-200/50 hover:border-sky-300 text-sky-700 bg-sky-50/30',
+    neutral: 'border-neutral-200/50 hover:border-neutral-300 text-neutral-700 bg-neutral-50/30'
   };
   return colors[color as keyof typeof colors] || colors.blue;
 };
